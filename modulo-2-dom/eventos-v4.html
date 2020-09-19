@@ -1,0 +1,41 @@
+<div id="app">
+    <p>{{ counter }}</p>
+    <button v-on:click="addCounter($event, 3)">Add Counter</button>
+    <p v-on:mousemove="updateXY">
+        Mouse {{x}} e {{y}}
+
+        <hr>
+        <span v-on:mousemove.stop="">PARAR AQUI</span>
+        <span v-on:mousemove.stop.prevent="">PARAR AQUI</span>
+        <span v-on:mousemove="stopMouse()">PARAR AQUI</span>
+
+        <hr>
+        <a v-on:click.prevent="" href="https://google.com">Google</a>
+        <a v-on:click.prevent="" href="https://google.com">Google Prevent</a>
+    </p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            x: 0,
+            y: 0,
+        },
+        methods: {
+            addCounter(event, value) {
+                console.log(value);
+                this.counter += value;
+            },
+            updateXY(event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            stopMouse(event) {
+                console.log('Stop mouse events');
+            }
+        }
+    });
+</script>

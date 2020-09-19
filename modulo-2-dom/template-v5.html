@@ -1,0 +1,23 @@
+
+<div id="app">
+    <p v-once>{{ title }}</p>
+    <p>{{ foo() }}</p>
+    <a v-bind:href="link">Google</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Using VueJS!',
+            link: 'http://google.com'
+        },
+        methods: {
+            foo() {
+                this.title = 'Bom dia';
+                return this.title;
+            }
+        }
+    });
+</script>
