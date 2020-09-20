@@ -1,0 +1,14 @@
+<div id="app">
+    <p>{{ title }}</p>
+    <input type="text" v-model="title">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Using VueJS!'
+        }
+    });
+</script>

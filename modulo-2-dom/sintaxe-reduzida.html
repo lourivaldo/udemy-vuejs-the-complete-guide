@@ -1,0 +1,20 @@
+<div id="app">
+    <p>{{ counter }}</p>
+    <button @click="addCounter()">Add 1</button>
+    <input type="text" :value="counter">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+        },
+        methods: {
+            addCounter() {
+                this.counter++;
+            }
+        }
+    });
+</script>
