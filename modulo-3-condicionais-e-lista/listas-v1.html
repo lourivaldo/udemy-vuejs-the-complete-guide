@@ -1,0 +1,22 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="color in colors" :style="{color: color}">{{ color }}</li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            colors: ['red', 'green', 'purple', 'blue'],
+            users: [
+                {name: 'Loro', age: 26, weight: 60},
+                {name: 'Isla', age: 30, weight: 90},
+                {name: 'Eduu', age: 30, weight: 120},
+            ],
+        }
+    })
+</script>
