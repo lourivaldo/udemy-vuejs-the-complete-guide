@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo Monstro</title>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div id="app">
+
+        <div class="players">
+            <div class="player">
+                <h1>{{ hero.name }}</h1>
+                <div class="life-bar" :class="{'low-life': hero.isLowLife()}">
+                    <div :style="{width: hero.life + '%'}">
+                        <h2>{{ hero.life }}%</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player">
+                <h1>{{ monster.name }}</h1>
+                <div class="life-bar" :class="{'low-life': monster.isLowLife()}">
+                    <div :style="{width: monster.life + '%'}">
+                        <h2>{{ monster.life }}%</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="result" v-if="endGame">
+            <div class="alert alert-success" v-if="heroWins">Você ganhou!</div>
+            <div class="alert alert-danger" v-if="!heroWins">Você perdeu!</div>
+        </div>
+
+        <div class="controls" v-show="!started || endGame">
+            <button class="btn btn-success" @click="newGame()">INICIAR NOVO JOGO</button>
+        </div>
+        <div class="controls" v-show="started && !endGame">
+            <button class="btn btn-danger" @click="attack()" :disabled="endGame">Ataque</button>
+            <button class="btn btn-warning" @click="specialAttack()" :disabled="endGame">Ataque Especial</button>
+            <button class="btn btn-success" @click="heal()" :disabled="endGame">Curar</button>
+            <button class="btn btn-default" @click="resetGame()">Desistir</button>
+        </div>
+
+        <div class="attacks">
+            <div class="attack" v-for="(a, index) in history">
+                <span v-if="a.type == 'heal'">{{a.player.name}} CUROU {{a.damage}}.</span>
+                <span v-else>{{a.player.name}} ATINGIU {{a.otherPlayer.name}} COM {{a.damage}}.</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script src="app.js"></script>
+</body>
+</html>

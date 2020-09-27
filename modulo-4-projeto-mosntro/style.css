@@ -1,0 +1,107 @@
+
+#app {
+
+}
+
+.players {
+    display: flex;
+}
+
+.player {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 10px;
+    width: 100%;
+}
+
+.player h1 {
+    margin: 0 0 10px;
+}
+
+.life-bar {
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+.life-bar div {
+    width: 100%;
+    background-color: green;
+}
+
+.life-bar h2 {
+    padding: 5px;
+    margin: 0;
+}
+
+.life-bar.low-life div {
+    background-color: red;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    flex-direction: column;
+    margin: 5px;
+    color: white;
+    padding: 8px 15px;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+}
+.btn[disabled] {
+    opacity: .5;
+}
+.btn.btn-danger {
+    background-color: red;
+}
+
+.btn.btn-success {
+    background-color: green;
+}
+
+.btn.btn-warning {
+    background-color: #ffb72e;
+}
+
+.btn.btn-default {
+    background-color: gray;
+}
+
+.attacks {
+    padding: 20px;
+}
+
+.attacks .attack {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+    background-color: indianred;
+    border-radius: 5px;
+    margin: 8px;
+}
+
+.attacks .attack:nth-child(even) {
+    background-color: cadetblue;
+}
+
+.alert {
+    padding: 20px;
+    text-align: center;
+    color: green;
+    font-size: 20px;
+    font-weight: bold;
+}
+.alert-danger {
+    color: red;
+}
