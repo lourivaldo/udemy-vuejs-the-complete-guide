@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="app1">
+        {{title1}}
+        <button type="button" @click="update()">UPDATE</button>
+    </div>
+
+    <div id="app2">
+        {{title2}}
+        <button type="button" @click="update()">UPDATE</button>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        const mv1 = new Vue({
+            el: '#app1',
+            data: {
+                title1: 'Teste 1',
+            },
+            methods: {
+                update() {
+                    mv2.title2 += '????';
+                },
+            },
+        });
+
+        const mv2 = new Vue({
+            el: '#app2',
+            data: {
+                title2: 'Teste 2',
+            },
+            methods: {
+                update() {
+                    mv1.title1 += '!!!!';
+                },
+            },
+        });
+
+        setTimeout(() => {
+            mv1.title1 = 'Update timer';
+        }, 2000);
+    </script>
+</body>
+</html>
