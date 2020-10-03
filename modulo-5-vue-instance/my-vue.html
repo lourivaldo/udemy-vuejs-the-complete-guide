@@ -1,0 +1,52 @@
+<meta charset="UTF-8">
+
+<div id="app">
+    {{ name }}
+    {{ surname }}
+    {{ 2 * 10}}
+    {{ 2 + 10}}
+    {{ 2 - 10}}
+    {{ Math.pow(3, 2) }}
+</div>
+
+<script>
+    function MyVue(params) {
+        this.$el = document.querySelector(params.el);
+        this.$data = params.data;
+
+        for (let attr in this.$data) {
+            Object.defineProperty(this, attr, {
+                get: () => {
+                    return this.$data[attr];
+                },
+                set: value => {
+                    this.$data[attr] = value;
+                },
+            });
+        }
+
+        const regex = /\{\{([\s\w,.)(+*-]*)\}\}/g;
+        this.$el.innerHTML = this.$el.innerHTML.replace(regex, (match, $1) => {
+            const value = this[$1.trim()];
+            return value ? value : eval($1);
+        });
+    }
+
+    const vm = new MyVue({
+        el: '#app',
+        data: {
+            name: 'Maria',
+            surname: 'Silva',
+        }
+    });
+
+    console.log(vm.name);
+    console.log(vm.$data.name);
+    vm.name = 'Loro';
+    console.log(vm.name);
+    console.log(vm.$data.name);
+
+    vm.age = 20;
+    console.log(vm.age);
+    console.log(vm.$data.age);
+</script>
