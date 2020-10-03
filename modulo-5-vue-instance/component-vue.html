@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="app">
+    <comp></comp>
+    <comp></comp>
+    <comp></comp>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script>
+    // const data = {
+    //     lesson: 'Lesson: using Refs',
+    //     module: 'Module: Vue instance',
+    // };
+
+    Vue.component('comp', {
+        template: `
+          <div>
+                <h1>{{ lesson }}</h1>
+                <h2>{{ module }}</h2>
+                <button @click="updateLesson">Update lesson</button>
+                <button @click="updateModule">Update module</button>
+            </div>
+        `,
+        // data:() => {
+        //     return data;
+        // },
+        data:() => {
+            return {
+                lesson: 'Lesson: using Refs',
+                module: 'Module: Vue instance',
+            };
+        },
+        methods: {
+            updateLesson() {
+                this.lesson += '#';
+            },
+            updateModule() {
+                this.module += '#';
+            },
+        },
+    });
+
+    const vm = new Vue({
+        el: '#app',
+    });
+</script>
+</body>
+</html>
