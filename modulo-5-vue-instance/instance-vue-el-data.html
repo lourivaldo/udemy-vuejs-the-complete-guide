@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        {{title}}<button type="button" @click="update()">UPDATE</button>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        const mv1 = new Vue({
+            el: '#app',
+            data: {
+                title: 'Teste 1',
+            },
+            methods: {
+                update() {
+                    this.title += '!';
+                },
+            },
+        });
+
+    </script>
+</body>
+</html>
