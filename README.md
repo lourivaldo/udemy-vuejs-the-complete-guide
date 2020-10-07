@@ -5,7 +5,7 @@
 - [x] Seção 3:Usando Condicionais & Renderização de Listas
 - [x] Seção 4:Projeto #01 - O Matador de Monstros
 - [x] Seção 5:Entendendo a Instância Vue
-- [ ] Seção 6:Fluxo de Desenvolvimento "Real" Usando Vue
+- [x] Seção 6:Fluxo de Desenvolvimento "Real" Usando Vue
 - [ ] Seção 7:Introdução aos Componentes
 - [ ] Seção 8:Comunicação Entre Componentes
 - [ ] Seção 9:Uso Avançado de Componentes

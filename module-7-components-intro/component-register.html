@@ -1,0 +1,49 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app1">
+    <counter1></counter1>
+    <counter1></counter1>
+    <counter1></counter1>
+</div>
+<hr>
+<div id="app2">
+    <app-counter></app-counter>
+    <app-counter></app-counter>
+    <app-counter></app-counter>
+</div>
+
+<script>
+    const CounterComponent = {
+        template: `
+        <div>
+            <span>{{ counter }}</span>
+            <button @click="counter++">+</button>
+            <button @click="counter--">-</button>
+        </div>
+        `,
+        data() {
+            return {
+                counter: 0,
+            }
+        }
+    };
+
+    new Vue({
+        el: '#app1',
+        // Local Register
+        components: {
+            counter1: CounterComponent,
+        }
+    });
+
+    new Vue({
+        el: '#app2',
+        // Local Register
+        components: {
+            'app-counter': CounterComponent,
+        }
+    });
+</script>
+</body>
+</html>

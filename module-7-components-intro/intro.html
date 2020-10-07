@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <counter></counter>
+    <counter></counter>
+    <counter></counter>
+</div>
+
+<script>
+    // Global register
+    Vue.component('counter', {
+        template: `
+        <div>
+            <span>{{ counter }}</span>
+            <button @click="counter++">+</button>
+            <button @click="counter--">-</button>
+        </div>
+        `,
+        data() {
+            return {
+                counter: 0,
+            }
+        }
+    });
+
+    const vm = new Vue({
+        el: '#app',
+    });
+</script>
+</body>
+</html>
