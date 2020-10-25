@@ -1,18 +1,15 @@
 <template>
   <div id="app">
       <h1>Counters</h1>
-      {{ counters }}
+      <app-counter></app-counter>
+      <app-counter></app-counter>
+      <app-counter></app-counter>
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
-  data() {
-      return {
-          counters: 0,
-      }
-  }
 }
 </script>
 
