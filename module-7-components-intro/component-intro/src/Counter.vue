@@ -3,7 +3,6 @@
         <span>{{ counters }}</span>
         <button @click="add">+</button>
         <button @click="sub">-</button>
-        <div>SCOPE</div>
     </div>
 </template>
 
@@ -27,10 +26,6 @@
 </script>
 
 <style scoped>
-    div {
-        border: 1px solid blue;
-    }
-
     span {
         border-bottom: 1px solid #CCC;
         height: 30px;

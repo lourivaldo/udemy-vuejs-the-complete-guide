@@ -12,7 +12,4 @@
 </script>
 
 <style>
-    div {
-        border: 1px solid red;
-    }
 </style>
