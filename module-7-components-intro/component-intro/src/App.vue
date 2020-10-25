@@ -2,6 +2,7 @@
   <div id="app">
       <h1>Counters</h1>
       <app-counters></app-counters>
+      <button>?</button>
   </div>
 </template>
 
