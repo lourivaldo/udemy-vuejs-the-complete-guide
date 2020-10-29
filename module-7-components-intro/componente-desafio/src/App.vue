@@ -1,14 +1,14 @@
 <template>
   <v-app>
-    <app-menu></app-menu>
+    <Menu></Menu>
 
-    <app-toolbar></app-toolbar>
+    <Toolbar></Toolbar>
 
     <v-content>
-      <app-carousel></app-carousel>
+      <Carousel></Carousel>
     </v-content>
 
-    <app-footer></app-footer>
+    <Footer></Footer>
   </v-app>
 </template>
 
@@ -20,10 +20,10 @@ import Carousel from '@/components/widgets/Carousel';
 
 export default {
   components: {
-      'app-menu': Menu,
-      'app-toolbar': Toolbar,
-      'app-footer': Footer,
-      'app-carousel': Carousel,
+      Menu,
+      Toolbar,
+      Footer,
+      Carousel,
   },
   data() {
     return {
