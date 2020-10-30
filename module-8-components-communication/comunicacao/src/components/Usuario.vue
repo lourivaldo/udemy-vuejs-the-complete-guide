@@ -11,7 +11,8 @@
             <bla-bla :userName="nome" :idade="idade" @nomeMudou="nome = $event.nome" :reiniciarFn="reiniciarFn"/>
 <!--            <bla-bla />-->
 <!--            <app-usuario-info :userName="1" />-->
-            <app-usuario-editar :idade="idade" @idadeMudou="idade = $event" />
+<!--            <app-usuario-editar :idade="idade" @idadeMudou="idade = $event" />-->
+            <app-usuario-editar :idade="idade" />
         </div>
     </div>
 </template>

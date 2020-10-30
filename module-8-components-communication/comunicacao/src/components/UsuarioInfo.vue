@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import barramento from "@/barramento";
+
 export default {
   // props: ['userName'],
   // props: {
@@ -48,6 +50,12 @@ export default {
       this.userName = 'Loro';
       this.reiniciarFn(this.userName);
     }
+  },
+  created() {
+    barramento.quandoIdadeMudar((idade) => {
+      console.log('idadeMudou', idade);
+      this.idade = idade;
+    });
   }
 }
 </script>
