@@ -2,11 +2,12 @@
     <div class="container">
         <h1>Componente Usuário</h1>
         <p>Esse é um componente muito legal!</p>
+        <p>Nome é <strong>{{ nome }}</strong></p>
         <button @click="alterarNome">Alterar Nome</button>
         <hr>
         <div class="componentes">
 <!--            <app-usuario-info />-->
-            <bla-bla :userName="nome" />
+            <bla-bla :userName="nome" @nomeMudou="nome = $event.nome" :reiniciarFn="reiniciarFn"/>
 <!--            <bla-bla />-->
 <!--            <app-usuario-info :userName="1" />-->
             <app-usuario-editar />
@@ -29,6 +30,9 @@ export default {
       alterarNome() {
         this.nome = 'Ana';
       },
+      reiniciarFn(nome) {
+        this.nome = nome;
+      }
     }
 }
 </script>
