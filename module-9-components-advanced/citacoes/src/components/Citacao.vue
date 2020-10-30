@@ -9,6 +9,15 @@
 <script>
 export default {
   props: ['citacao'],
+  created() {
+    console.log('created');
+  },
+  activated() {
+    console.log('activated');
+  },
+  deactivated() {
+    console.log('deactivated');
+  },
 }
 </script>
 

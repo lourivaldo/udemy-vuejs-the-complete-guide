@@ -39,7 +39,13 @@ export default {
         indice() {
             return Math.abs(this.numero % 3)
         }
-    }
+    },
+    activated() {
+      console.log('activated');
+    },
+    deactivated() {
+      console.log('deactivated');
+    },
 }
 </script>
 
