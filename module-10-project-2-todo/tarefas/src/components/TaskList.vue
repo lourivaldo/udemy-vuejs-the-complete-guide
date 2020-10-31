@@ -1,11 +1,8 @@
 <template>
   <div>
-<!--    <div class="header">-->
-<!--      <input type="text" v-model="currentTask.title" placeholder="New task" /><button @click="addTask(currentTask)">+</button>-->
-<!--    </div>-->
     <div class="tasks">
       <template v-if="tasks.length">
-        <task v-for="task in tasks" :key="task.title" :task="task"/>
+        <task v-for="task in tasks" :key="task.title" :task="task" @taskDeleted="$emit('taskDeleted', $event)"/>
       </template>
       <p v-else class="no-tasks">Sua vida está em dia!</p>
     </div>

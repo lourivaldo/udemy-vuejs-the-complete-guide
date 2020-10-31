@@ -3,7 +3,7 @@
 		<h1>Tarefas</h1>
     <progress-bar></progress-bar>
     <new-task @taskAdded="addTask"></new-task>
-    <task-list :tasks="tasks"></task-list>
+    <task-list :tasks="tasks" @taskDeleted="deleteTask"></task-list>
 	</div>
 </template>
 
@@ -30,6 +30,10 @@ export default {
         task.pending = true;
         this.tasks.push(task);
       }
+    },
+    deleteTask(task) {
+      const index = this.tasks.indexOf(task);
+      if (index !== -1) this.tasks.splice(index, 1);
     },
   }
 }
