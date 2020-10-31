@@ -8,8 +8,8 @@
 - [x] Seção 6:Fluxo de Desenvolvimento "Real" Usando Vue
 - [x] Seção 7:Introdução aos Componentes
 - [x] Seção 8:Comunicação Entre Componentes
-- [ ] Seção 9:Uso Avançado de Componentes
-- [ ] Seção 10:Projeto #02 - Tarefas (TODO)
+- [x] Seção 9:Uso Avançado de Componentes
+- [x] Seção 10:Projeto #02 - Tarefas (TODO)
 - [ ] Seção 11:Manipulando Entrada de Usuário com
 - [ ] Seção 12:Usando e Criando Diretivas
 - [ ] Seção 13:Melhorando sua App com Filtros e Mixins
