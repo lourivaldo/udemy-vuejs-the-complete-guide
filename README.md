@@ -22,6 +22,6 @@
 - [ ] Seção 20:Bonus: Projeto #04 - Projeto Calculadora
 - [ ] Seção 21:Bonus: Projeto #05 - Problema Monty Hall
 - [ ] Seção 22:Bonus: Projeto #06 - Base de Conhecimento
-- [ ] Seção 24:Bonus: CSS Grid & Flexbox
+- [x] Seção 24:Bonus: CSS Grid & Flexbox
 - [x] Seção 25:Bonus: Javascript Essencial
 - [x] Seção 26:Bonus: HTML Essencial
