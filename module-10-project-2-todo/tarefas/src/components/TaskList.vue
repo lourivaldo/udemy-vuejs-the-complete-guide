@@ -2,7 +2,9 @@
   <div>
     <div class="tasks">
       <template v-if="tasks.length">
-        <task v-for="task in tasks" :key="task.title" :task="task" @taskDeleted="$emit('taskDeleted', $event)"/>
+        <task v-for="task in tasks" :key="task.title" :task="task"
+              @taskDeleted="$emit('taskDeleted', $event)"
+              @taskStateChanged="$emit('taskStateChanged', $event)"/>
       </template>
       <p v-else class="no-tasks">Sua vida está em dia!</p>
     </div>
