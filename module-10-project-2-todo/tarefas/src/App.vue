@@ -1,12 +1,37 @@
 <template>
 	<div id="app">
 		<h1>Tarefas</h1>
+    <progress-bar></progress-bar>
+    <new-task @taskAdded="addTask"></new-task>
+    <task-list :tasks="tasks"></task-list>
 	</div>
 </template>
 
 <script>
-export default {
+import ProgressBar from './components/ProgressBar'
+import TaskList from './components/TaskList'
+import NewTask from './components/NewTask'
 
+export default {
+  components: { ProgressBar, TaskList, NewTask },
+  data() {
+    return {
+      tasks: [
+        {title: 'Tarefa 1', pending: true},
+        {title: 'Tarefa 2', pending: false},
+        {title: 'Tarefa 3', pending: false},
+      ],
+    }
+  },
+  methods: {
+    addTask(task) {
+      const sameName = t => t.title === task.title;
+      if (!this.tasks.some(sameName)) {
+        task.pending = true;
+        this.tasks.push(task);
+      }
+    },
+  }
 }
 </script>
 
