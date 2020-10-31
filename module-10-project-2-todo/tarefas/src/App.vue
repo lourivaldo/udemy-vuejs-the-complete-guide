@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<h1>Tarefas</h1>
-    <progress-bar></progress-bar>
+    <progress-bar :progress="progress"></progress-bar>
     <new-task @taskAdded="addTask"></new-task>
     <task-list :tasks="tasks"
                @taskDeleted="deleteTask"
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import ProgressBar from './components/ProgressBar'
+import ProgressBar from './components/TasksProgress'
 import TaskList from './components/TaskList'
 import NewTask from './components/NewTask'
 
@@ -19,11 +19,31 @@ export default {
   data() {
     return {
       tasks: [
-        {title: 'Tarefa 1', pending: true},
-        {title: 'Tarefa 2', pending: false},
-        {title: 'Tarefa 3', pending: false},
+        // {title: 'Tarefa 1', pending: true},
+        // {title: 'Tarefa 2', pending: false},
+        // {title: 'Tarefa 3', pending: false},
       ],
     }
+  },
+  created() {
+    const json = localStorage.getItem('tasks');
+    const tasks = JSON.parse(json);
+    this.tasks = Array.isArray(tasks) ? tasks : [];
+  },
+  computed: {
+    progress() {
+      const total = this.tasks.length;
+      const done = this.tasks.filter(t => !t.pending).length;
+      return Math.round(done / total * 100) || 0;
+    }
+  },
+  watch: {
+    tasks: {
+      deep: true, // Very good!!!!
+      handler() {
+        localStorage.setItem('tasks', JSON.stringify(this.tasks))
+      },
+    },
   },
   methods: {
     addTask(task) {
