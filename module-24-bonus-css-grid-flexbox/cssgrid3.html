@@ -4,49 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <title>CSS Grid #03</title>
-    <link rel="stylesheet" href="../../../../Users/lourivaldo/Downloads/web-moderno-master/web-moderno-master/exercicios-web/css/css/tag.css">
+    <link rel="stylesheet" href="css/tag.css">
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
+       * {
+           padding: 0;
+           margin: 0;
+       }
 
-        header {
-            grid-area: cabecalho;
-        }
+       header {
+           grid-area: app-header;
+       }
 
-        nav {
-            grid-area: navegacao;
-        }
+       nav {
+           grid-area: app-nav;
+       }
 
-        main {
-            grid-area: conteudo;
-        }
+       main {
+           grid-area: app-content;
+       }
 
-        footer {
-            grid-area: rodape;
-        }
+       footer {
+           grid-area: app-footer;
+       }
 
-        body {
-            display: grid;
-            min-height: 100vh;
-            grid-template-columns: 300px 1fr;
-            grid-template-rows: 100px 1fr 100px;
-            grid-template-areas:
-                'cabecalho cabecalho'
-                'navegacao conteudo'
-                'rodape rodape';
-        }
+       body {
+           background-color: #504b4b;
+           transition: 1s;
+           display: grid;
+           min-height: 100vh;
+           grid-template-columns: 300px 1fr;
+           grid-template-rows: 100px 1fr 100px;
+           grid-template-areas:
+                'app-header app-header'
+                'app-nav app-content'
+                'app-footer app-footer';
+       }
 
-        @media(max-width: 700px) {
+       @media(max-width: 700px) {
             body {
                 grid-template-columns: 1fr;
-                grid-template-rows: 80px 1fr 100px;
-                grid-template-areas: 'navegacao' 'conteudo' 'rodape';
+                grid-template-rows: 80px 80px 1fr 100px;
+                grid-template-areas:/*'app-header'*/ 'app-nav' 'app-content' 'app-footer';
+                transition: 1s;
+                background-color: #d2c4c4;
             }
-
-            header { display: none; }
-        }
+           header {
+               display: none;
+           }
+       }
     </style>
 </head>
 
@@ -56,7 +61,7 @@
     <footer class="tag">RODAPÉ</footer>
     <nav class="tag">NAVEGAÇÃO</nav>
 
-    <script src="../../../../Users/lourivaldo/Downloads/web-moderno-master/web-moderno-master/exercicios-web/css/js/tag.js"></script>
+    <script src="js/tag.js"></script>
 </body>
 
 </html>
