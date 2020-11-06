@@ -33,9 +33,42 @@
 
         .flex-container div {
             width: 100px;
-            flex-grow: initial;
+            flex-grow: 0;
+            flex-grow: 1;
+        }
+
+        .flex-container div:nth-child(1) {
+            flex-grow: 2;
+        }
+
+        .flex-container {
+            width: 300px;
+            flex-shrink: 1;
+        }
+        .flex-container div:nth-child(1) {
+            flex-shrink: 5;
         }
     </style>
+    <script>
+        function notaDoAluno (codigoAluno, ...notas){
+
+            const pesoMaiorNota = 4;
+            const pesoMenorNota = 3;
+
+            notas = notas.map((nota) => {
+                return parseFloat(nota);
+            })
+
+            notas = notas.sort((nota, outraNota) => {
+                return nota - outraNota;
+            }).reverse();
+
+            console.log(codigoAluno, notas)
+            return codigoAluno;
+        }
+
+        console.log(notaDoAluno('000002', 3, 10, 5))
+    </script>
 </head>
 
 <body>
