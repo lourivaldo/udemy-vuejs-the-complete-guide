@@ -5,29 +5,38 @@
 			<form class="painel">
 				<div class="cabecalho">Formulário</div>
 				<Rotulo nome="E-mail">
-					<input type="text">
+					<input type="text" v-model.lazy.trim="user.email">
 				</Rotulo>
 				<Rotulo nome="Senha">
-					<input type="password">
+					<input type="password" v-model="user.password">
 				</Rotulo>
 				<Rotulo nome="Idade">
-					<input type="number">
+					<input type="number" v-model.number="user.age">
 				</Rotulo>
 				<Rotulo nome="Mensagem">
-					<textarea name="" cols="30" rows="5"></textarea>
+					<textarea name="" cols="30" rows="5" v-model="message"></textarea>
 				</Rotulo>
 				<Rotulo nome="Características do Problema">
-					<span class="mr-4"><input type="checkbox" value="reproduzivel"> Reproduzível</span>
-					<span><input type="checkbox" value="intermitente"> Intermitente</span>
+					<span class="mr-4">
+						<input type="checkbox" value="reproduzivel" v-model="features"> Reproduzível
+					</span>
+					<span>
+						<input type="checkbox" value="intermitente" v-model="features"> Intermitente
+					</span>
 				</Rotulo>
 				<Rotulo nome="Qual produto?">
-					<span class="mr-4"><input type="radio"> Web</span>
-					<span class="mr-4"><input type="radio"> Mobile</span>
-					<span><input type="radio"> Outro</span>
+					<span class="mr-4"><input type="radio" value="web" v-model="productType"> Web</span>
+					<span class="mr-4"><input type="radio" value="mobile" v-model="productType"> Mobile</span>
+					<span><input type="radio" value="other" v-model="productType"> Outro</span>
 				</Rotulo>
 				<Rotulo nome="Prioridade">
-					<select name="" id="">
-						<option></option>
+					<select v-model="priority">
+						<option v-for="p in priorities"
+										:key="p.code"
+										:value="p.code"
+										:selected="p.code === 2">
+							({{ p.code }}) {{ p.name }}
+						</option>
 					</select>
 				</Rotulo>
 				<Rotulo nome="Primeira Reclamação?">
@@ -39,25 +48,27 @@
 			<div class="painel">
 				<div class="cabecalho">Resultado</div>
 				<Rotulo nome="E-mail">
-					<span>???</span>
+					<span>{{ user.email }}</span>
 				</Rotulo>
 				<Rotulo nome="Senha">
-					<span>???</span>
+					<span> {{ user.password }}</span>
 				</Rotulo>
-				<Rotulo nome="Idade">
-					<span>???</span>
+				<Rotulo :nome="'Idade(' + typeAge + ')'">
+					<span>{{ user.age }}</span>
 				</Rotulo>
 				<Rotulo nome="Mensagem">
-					<span>???</span>
+					<span style="white-space: pre">{{ message }}</span>
 				</Rotulo>
 				<Rotulo nome="Marque as Opções">
-					<span>???</span>
+					<span>
+						<ul><li v-for="feature in features" :key="feature">{{ feature }}</li></ul>
+					</span>
 				</Rotulo>
 				<Rotulo nome="Qual produto?">
-					<span>???</span>
+					<span> {{ productType }}</span>
 				</Rotulo>
 				<Rotulo nome="Prioridade">
-					<span>???</span>
+					<span> {{ priority }}</span>
 				</Rotulo>
 				<Rotulo nome="Primeira Reclamação?">
 					<span>???</span>
@@ -73,7 +84,35 @@ import Escolha from './components/Escolha.vue'
 
 export default {
 	name: 'app',
-	components: { Rotulo, Escolha }
+	components: { Rotulo, Escolha },
+	computed: {
+		typeAge() {
+			return typeof this.user.age;
+		}
+	},
+  data: function () {
+    return {
+			message: '',
+			features: [],
+			priority: 2,
+			productType: '',
+			priorities: [
+				{ code: 1, name: 'Low'},
+				{ code: 2, name: 'Normal'},
+				{ code: 3, name: 'High'},
+			],
+      user: {
+				email: '',
+				password: '',
+				age: 20,
+      }
+    }
+  },
+  created() {
+		setTimeout(() => {
+			this.email = '';
+		}, 5000);
+  }
 }
 </script>
 
