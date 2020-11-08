@@ -4,12 +4,35 @@
 		<hr>
 		<!-- Exercício -->
 		<!-- Escreva uma diretiva que funcione com o v-on (escute eventos) -->
+        <button v-quando:click="callback">Executar</button> <br>
+        <button v-quando:mouseenter="callback">Mouse Enter</button><br>
+        <button v-quando:mouseleave="callback">Mouse Enter</button>
 	</div>
 </template>
 
 <script>
 export default {
-	
+    directives: {
+        'quando': {
+            bind(el, binding) {
+            // el.addEventListener('click', () => {
+            //     if (binding.value) {
+            //         binding.value();
+            //     }
+            // });
+                const event = binding.arg;
+                const callback = binding.value;
+                el.addEventListener(event, () => {
+                  if (callback) callback();
+                });
+            },
+        },
+    },
+	methods: {
+        callback() {
+            alert('OK');
+        }
+    }
 }
 </script>
 
