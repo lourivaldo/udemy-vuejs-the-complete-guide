@@ -10,7 +10,7 @@
 - [x] Seção 8:Comunicação Entre Componentes
 - [x] Seção 9:Uso Avançado de Componentes
 - [x] Seção 10:Projeto #02 - Tarefas (TODO)
-- [ ] Seção 11:Manipulando Entrada de Usuário com
+- [x] Seção 11:Manipulando Entrada de Usuário com
 - [ ] Seção 12:Usando e Criando Diretivas
 - [ ] Seção 13:Melhorando sua App com Filtros e Mixins
 - [ ] Seção 14:Adicionando Animações e Transições
