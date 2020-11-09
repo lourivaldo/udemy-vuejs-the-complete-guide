@@ -4,17 +4,33 @@
         <hr>
         <p>{{ user.cpf | cpf | reverse}}</p>
         <input type="text" :value="user.cpf | cpf">
-	</div>
+        <hr>
+        <Fruits></Fruits>
+        <hr>
+        <div>
+            <ul>
+                <li v-for="f in fruits" :key="f">{{ f }}</li>
+            </ul>
+            <input type="text" v-model="fruit" @keydown.enter="add">
+        </div>
+        <h1>{{ userLogged }}</h1>
+    </div>
 </template>
 
 <script>
+import Fruits from './Fruits';
+import FruitMixin from './FruitMixin';
+import UserMixin from './UserMixin';
+
 export default {
+    components: { Fruits },
+    mixins: [ FruitMixin, UserMixin ],
     filters: {
         cpf(value) {
             return `${value}`
                 .replace(/\D/, '')
                 .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4")
-        }
+        },
     },
     data() {
         return {
