@@ -3,6 +3,7 @@
 		<h1>Filtros & Mixins</h1>
         <hr>
         <p>{{ user.cpf | cpf | reverse}}</p>
+        <input type="text" :value="user.cpf | cpf">
 	</div>
 </template>
 
@@ -34,5 +35,8 @@ export default {
 	color: #2c3e50;
 	margin-top: 60px;
 	font-size: 2.5rem;
+}
+input {
+    font-size: 2.5rem;
 }
 </style>
