@@ -14,6 +14,7 @@
             <input type="text" v-model="fruit" @keydown.enter="add">
         </div>
         <h1>{{ userLogged }}</h1>
+        <h2>{{ global }}</h2>
     </div>
 </template>
 
@@ -39,6 +40,9 @@ export default {
             },
         }
     },
+    created() {
+        console.log('App created');
+    }
 }
 </script>
 

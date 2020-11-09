@@ -3,5 +3,8 @@ export default {
         userLogged() {
                 return 'Lourivaldo';
         }
-    }
+    },
+    created() {
+        console.log('UserMixin created');
+    },
 }
