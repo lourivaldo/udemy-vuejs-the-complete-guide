@@ -12,7 +12,7 @@
 - [x] Seção 10:Projeto #02 - Tarefas (TODO)
 - [x] Seção 11:Manipulando Entrada de Usuário com
 - [x] Seção 12:Usando e Criando Diretivas
-- [ ] Seção 13:Melhorando sua App com Filtros e Mixins
+- [x] Seção 13:Melhorando sua App com Filtros e Mixins
 - [ ] Seção 14:Adicionando Animações e Transições
 - [ ] Seção 15:Conectando com Servidor via HTTP
 - [ ] Seção 16:Rotas em uma Aplicação VueJS
