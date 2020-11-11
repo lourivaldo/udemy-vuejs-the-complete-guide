@@ -14,7 +14,7 @@
 - [x] Seção 12:Usando e Criando Diretivas
 - [x] Seção 13:Melhorando sua App com Filtros e Mixins
 - [ ] Seção 14:Adicionando Animações e Transições
-- [ ] Seção 15:Conectando com Servidor via HTTP
+- [x] Seção 15:Conectando com Servidor via HTTP
 - [ ] Seção 16:Rotas em uma Aplicação VueJS
 - [ ] Seção 17:Melhor Gerenciamento de Estado com Vuex
 - [ ] Seção 18:Projeto #03 - The Stock Trader
