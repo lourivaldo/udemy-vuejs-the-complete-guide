@@ -7,6 +7,8 @@ import User from './components/user/User'
 Vue.use(Router);
 
 export default new Router({
+    // mode: 'hash', // default
+    mode: 'history',
     routes:[
         {path: '/', component: Home},
         {path: '/user', component: User},
