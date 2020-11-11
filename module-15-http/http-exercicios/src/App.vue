@@ -47,6 +47,8 @@ export default {
 			this.$http('users.json').then(res => {
 				this.users = res.data;
 			})
+
+			this.$http.defaults.headers.common['Authorization'] = 'Bearer 1234'
 		},
 	},
 	// created() {

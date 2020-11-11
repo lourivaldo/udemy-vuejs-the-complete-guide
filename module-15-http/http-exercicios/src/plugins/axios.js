@@ -1,13 +1,21 @@
 import Vue from 'vue'
 import axios from 'axios'
 
-// axios.defaults.baseURL = 'https://cod3r-vuejs.firebaseio.com/';
+// axios.defaults.baseURL = 'https://cod3r-vuejs.firebaseio.com/'
+// axios.defaults.headers.common['Authorization'] = 'Bearer 1234'
+// axios.defaults.headers.get['Accept'] = 'application/json'
 
 Vue.use({
     install(Vue) {
         // Vue.prototype.$http = axios
         Vue.prototype.$http = axios.create({
             baseURL: 'https://cod3r-vuejs.firebaseio.com/',
+            headers: {
+                'Authorization': 'Bearer 1234',
+                // get: {
+                //     'Authorization': 'Bearer 1234',
+                // }
+            }
         })
 
         Vue.prototype.$http.interceptors.request.use(config => {
