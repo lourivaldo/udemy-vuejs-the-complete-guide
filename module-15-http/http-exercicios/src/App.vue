@@ -1,6 +1,9 @@
 <template>
 	<div id="app" class="container">
 		<h1>HTTP com Axios</h1>
+		<b-alert show dismissible v-for="message in messages"
+    :key="message.text"
+		:variant="message.type">{{ message.text }}</b-alert>
 		<b-card>
 			<b-form-group label="Nome:">
 				<b-form-input type="text" size="lg" v-model="user.name"
@@ -16,10 +19,14 @@
 		</b-card>
 		<hr>
 		<b-list-group>
-			<b-list-group-item v-for="user in users" :key="user.id">
+			<b-list-group-item v-for="(user, id) in users" :key="id">
+<!--			<b-list-group-item v-for="user in users" :key="user.id">-->
 				<strong>Nome: </strong> {{ user.name }} <br>
 				<strong>Email: </strong> {{ user.email }} <br>
-				<strong>ID: </strong> {{ user.id }} <br>
+				<strong>ID: </strong> {{ id }} <br>
+				<!--				<strong>ID: </strong> {{ user.id }} <br>-->
+				<b-button variant="warning" size="lg" @click="getUser(id)">Carregar</b-button>
+				<b-button variant="danger" size="lg" @click="removeUser(id)" class="ml-2">Excluir</b-button>
 			</b-list-group-item>
 		</b-list-group>
 	</div>
@@ -29,7 +36,9 @@
 export default {
 	data() {
 		return {
+			messages: [],
 			users: [],
+			id: null,
 			user: {
 				name: '',
 				email: '',
@@ -37,10 +46,24 @@ export default {
 		}
 	},
 	methods: {
+		clear() {
+			this.user.name = '';
+			this.user.email = '';
+			this.id = null;
+			this.messages = [];
+		},
 		save() {
-			this.$http.post('users.json', this.user).then(() => {
-				this.user.name = '';
-				this.user.email = '';
+			// this.$http.post('users.json', this.user).then(() => {
+			// 	this.clear()
+			// })
+			const method = this.id ? 'patch' : 'post'
+			const url = this.id ? `/${this.id}.json` : '.json';
+			this.$http[method](`/users${url}`, this.user).then(() => {
+				this.clear()
+				this.messages.push({
+					text: 'Salvo com sucesso!',
+					type: 'success',
+				})
 			})
 		},
 		getUsers() {
@@ -48,7 +71,21 @@ export default {
 				this.users = res.data;
 			})
 
-			this.$http.defaults.headers.common['Authorization'] = 'Bearer 1234'
+			// this.$http.defaults.headers.common['Authorization'] = 'Bearer 1234'
+		},
+		getUser(id) {
+			this.id = id
+			this.user = {...this.users[id]}
+		},
+		removeUser(id) {
+			this.$http.delete(`/users/${id}.json`).then(() => {
+				this.clear()
+			}).catch(() => {
+				this.messages.push({
+					text: 'Problema ao excluir',
+					type: 'danger',
+				})
+			})
 		},
 	},
 	// created() {
