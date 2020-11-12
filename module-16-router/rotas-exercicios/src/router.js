@@ -13,7 +13,7 @@ export default new Router({
     // mode: 'hash', // default
     mode: 'history',
     routes:[
-        {path: '/', component: Home},
+        {path: '/', component: Home, name: 'home'},
         {
             path: '/user',
             component: User,
@@ -21,7 +21,7 @@ export default new Router({
             children: [
                 {path: '', component: UserList},
                 {path: ':id', component: UserDetail, props: true},
-                {path: ':id/edit', component: UserEdit, props: true},
+                {path: ':id/edit', component: UserEdit, props: true, name: 'user-edit'},
             ],
         },
     ]

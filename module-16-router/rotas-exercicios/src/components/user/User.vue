@@ -3,6 +3,7 @@
     <h2>Usuários</h2>
     <hr>
 		<router-view></router-view>
+		<button sucesso @click="goHome">Ir para home</button>
 </div>
 </template>
 
@@ -22,7 +23,8 @@ export default {
     methods: {
         goHome() {
             // this.$router.push('/')
-            this.$router.push({path: '/'})
+            // this.$router.push({path: '/'})
+            this.$router.push({ name: 'home' })
         }
     }
 }
