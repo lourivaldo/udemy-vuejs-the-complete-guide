@@ -2,14 +2,20 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from './components/Home'
-import User from './components/user/User'
-import UserDetail from './components/user/UserDetail'
-import UserList from './components/user/UserList'
-import UserEdit from './components/user/UserEdit'
 import Menu from './components/template/Menu';
 import MenuAlt from './components/template/MenuAlt';
+// import User from './components/user/User'
+// import UserList from './components/user/UserList'
+// import UserDetail from './components/user/UserDetail'
+// import UserEdit from './components/user/UserEdit'
 
 Vue.use(Router);
+
+// carregar forma tardia
+const User = () => import(/* webpackChunkName: "user-module" */'./components/user/User');
+const UserList = () => import(/* webpackChunkName: "user-module" */'./components/user/UserList');
+const UserDetail = () => import('./components/user/UserDetail');
+const UserEdit = () => import('./components/user/UserEdit');
 
 const router = new Router({
     // mode: 'hash', // default
