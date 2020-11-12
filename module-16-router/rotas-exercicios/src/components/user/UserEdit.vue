@@ -5,7 +5,7 @@
     <p><strong>ID</strong> {{ id }} / {{ $route.params.id }}</p>
     <p><strong>Completo</strong> {{ $route.query.complete ? 'S' : 'N' }}</p>
     <p><strong>Idioma</strong> {{ $route.query.lang }}</p>
-    <button primario>Confirmar</button>
+    <button primario @click="confirmed = true">Confirma</button>
     <div id="rodape">
         <h3>Curso vue</h3>
     </div>
@@ -15,6 +15,18 @@
 <script>
 export default {
 	props: ['id'],
+    data() {
+	  return {
+          confirmed: false,
+      }
+    },
+    beforeRouteLeave(to, from, next) {
+        if(this.confirmed) {
+            next();
+        } else {
+            confirm('Tem certeza?') ? next() : next(false);
+        }
+    },
 }
 </script>
 
