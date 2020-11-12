@@ -3,8 +3,12 @@
 		<h1>Rotas com VueRouter</h1>
 <!--		<Menu></Menu>-->
         <router-view name="menu"></router-view>
-        <router-view></router-view>
-				<router-view name="menu-footer"></router-view>
+        <transition mode="out-in"
+                enter-active-class="animated rubberBand"
+                leave-active-class="animated rollOut">
+            <router-view/>
+        </transition>
+        <router-view name="menu-footer"></router-view>
 	</div>
 </template>
 
