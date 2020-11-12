@@ -17,6 +17,17 @@
 <script>
 export default {
 	props: ['id'],
+    beforeRouteEnter(to, from, next) {
+        // console.log(this.id);// não carregou o componente nesse ponto do ciclo de vida
+        console.log('beforeRouteEnter UserDetail');
+
+        // next(vm => {
+        //     console.log(vm.id);
+        // });
+
+        const auth = true;
+        auth ? next() : next(false)
+    }
 }
 </script>
 
