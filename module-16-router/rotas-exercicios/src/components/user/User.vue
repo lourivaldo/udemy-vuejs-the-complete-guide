@@ -2,14 +2,13 @@
 <div class="usuario">
     <h2>Usuários</h2>
     <hr>
-    <p><strong>ID</strong> {{ id }}</p>
-    <button sucesso @click="goHome">Ir para home</button>
+		<router-view></router-view>
 </div>
 </template>
 
 <script>
 export default {
-    props: ['id'],
+    // props: ['id'],
     // data() {
     //     return {
     //         id: this.$route.params.id,
