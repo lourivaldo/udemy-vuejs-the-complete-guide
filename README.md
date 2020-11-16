@@ -15,8 +15,8 @@
 - [x] Seção 13:Melhorando sua App com Filtros e Mixins
 - [ ] Seção 14:Adicionando Animações e Transições
 - [x] Seção 15:Conectando com Servidor via HTTP
-- [ ] Seção 16:Rotas em uma Aplicação VueJS
-- [ ] Seção 17:Melhor Gerenciamento de Estado com Vuex
+- [x] Seção 16:Rotas em uma Aplicação VueJS
+- [x] Seção 17:Melhor Gerenciamento de Estado com Vuex
 - [ ] Seção 18:Projeto #03 - The Stock Trader
 - [x] Seção 19:Publicando uma Aplicação VueJS na Amazon
 - [ ] Seção 20:Bonus: Projeto #04 - Projeto Calculadora
