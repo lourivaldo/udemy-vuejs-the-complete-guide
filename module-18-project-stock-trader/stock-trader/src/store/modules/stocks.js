@@ -10,6 +10,7 @@ export default {
         },
     },
     actions: {
+        /* eslint-disable */
         buyStock({ commit }, order) {
             commit();
         },
