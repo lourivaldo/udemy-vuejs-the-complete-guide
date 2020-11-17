@@ -15,6 +15,8 @@
 </template>
 
 <script>
+    import { mapActions } from 'vuex'
+
     export default {
         props: {
             stock: {
@@ -27,15 +29,17 @@
             }
         },
         methods: {
+            ...mapActions({
+                'doBuyStock': 'buyStock'
+            }),
             buyStock() {
                 const order = {
                     stockId: this.stock.id,
                     stockPrice: this.stock.price,
                     quantity: this.quantity,
                 };
+                this.doBuyStock(order);
                 this.quantity = 0;
-                // eslint-disable-next-line
-                console.log(order)
             }
         }
     }

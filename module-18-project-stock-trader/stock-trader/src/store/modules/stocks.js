@@ -10,9 +10,8 @@ export default {
         },
     },
     actions: {
-        /* eslint-disable */
         buyStock({ commit }, order) {
-            commit();
+            commit('buyStock', order);
         },
         initStocks({ commit }) {
             commit('setStocks', stocks)
