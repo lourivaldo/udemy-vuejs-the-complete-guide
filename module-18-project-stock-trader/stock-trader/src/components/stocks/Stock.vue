@@ -34,7 +34,7 @@
                     quantity: this.quantity,
                 };
                 this.quantity = 0;
-
+                // eslint-disable-next-line
                 console.log(order)
             }
         }
