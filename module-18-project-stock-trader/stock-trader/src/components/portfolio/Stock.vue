@@ -10,8 +10,11 @@
         <v-card>
             <v-container fill-height>
                 <v-text-field label="Amount" type="number" v-model.number="quantity"/>
-                <v-btn @click="sellStock" :disabled="quantity <= 0 || !Number.isInteger(quantity)"
-                       class="blue darken-3 white--text">Sell</v-btn>
+                <v-btn class="blue darken-3 white--text"
+                       @click="sellStock"
+                       :error="insufficientQuantity || !Number.isInteger(quantity)"
+                       :disabled="insufficientQuantity || quantity <= 0 || !Number.isInteger(quantity)"
+                       > {{ insufficientQuantity ? 'Insufficient Quantity' : 'Sell'}}</v-btn>
             </v-container>
         </v-card>
     </v-flex>
@@ -30,6 +33,11 @@
             return {
                 quantity: 0,
             }
+        },
+        computed: {
+            insufficientQuantity() {
+                return this.quantity > this.stock.quantity
+            },
         },
         methods: {
             ...mapActions({
