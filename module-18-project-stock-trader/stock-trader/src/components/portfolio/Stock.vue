@@ -3,7 +3,7 @@
         <v-card class="blue darken-3 white--text">
             <v-card-title class="headline">
                 <strong>
-                    {{ stock.name }} <small>(Price: {{ stock.price }}) | Qtd: {{ stock.quantity }}</small>
+                    {{ stock.name }} <small>(Price: {{ stock.price | currency }}) | Qtd: {{ stock.quantity }}</small>
                 </strong>
             </v-card-title>
         </v-card>

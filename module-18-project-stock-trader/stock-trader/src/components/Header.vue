@@ -28,7 +28,7 @@
             </v-menu>
             <v-layout align-center>
                 <span class="text-uppercase grey--text text--darken-2">
-                    Funds: {{ funds }}
+                    Funds: {{ funds | currency }}
                 </span>
             </v-layout>
         </v-toolbar-items>
