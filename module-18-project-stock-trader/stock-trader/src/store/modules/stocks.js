@@ -10,7 +10,9 @@ export default {
         },
     },
     actions: {
-        buyStock({ commit }, order) {
+        buyStock({ commit, state }, order) {
+            const record = state.stocks.find(e => e.id === order.stockId);
+            order.name = record.name;
             commit('buyStock', order);
         },
         initStocks({ commit }) {
