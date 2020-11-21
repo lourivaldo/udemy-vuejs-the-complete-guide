@@ -33,7 +33,7 @@
         </transition>
 
         <hr>
-        <button class="btn btn-success" @click="exibir2 = !exibir2">Mostrar</button>
+        <button class="btn btn-success" @click="exibir2 = !exibir2">Alternar</button>
         <transition
             :css="false"
             @before-enter="beforeEnter"
@@ -60,16 +60,34 @@ export default {
             exibir: false,
             exibir2: true,
             tipoAnimacao: 'fade',
+            larguraBase: 0,
         }
     },
+
     methods: {
+        animar(el, done, negativo) {
+            let rodada = 1;
+            const temp = setInterval(() => {
+                const novaLargura = this.larguraBase + (negativo ? -rodada * 10 : +rodada * 10)
+                el.style.width = `${novaLargura}px`;
+                rodada++;
+                if (rodada > 30) {
+                    clearInterval(temp)
+                    done()
+                }
+            }, 20)
+        },
         /* ENTER */
         beforeEnter(el) {
             console.log('beforeEnter')
+            this.larguraBase = 0
+            el.style.width = `${this.larguraBase}px`
         },
         enter(el, done) {
-            console.log('enter')
+            console.log('enter');
             // done();
+            this.animar(el, done, false)
+
         },
         afterEnter(el) {
             console.log('afterEnter')
@@ -80,9 +98,12 @@ export default {
         /* LEAVE */
         beforeLeave(el) {
             console.log('beforeLeave')
+            this.larguraBase = 300
+            el.style.width = `${this.larguraBase}px`
         },
-        leave(el) {
+        leave(el, done) {
             console.log('leave')
+            this.animar(el, done, true)
         },
         afterLeave(el) {
             console.log('afterLeave')
