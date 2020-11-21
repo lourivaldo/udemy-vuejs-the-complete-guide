@@ -21,6 +21,15 @@
                 leave-active-class="animated shake">
             <b-alert class="" variant="info" show v-show="exibir">{{ msg }}</b-alert>
         </transition>
+
+        <hr>
+        <b-select v-model="tipoAnimacao" class="mb-4">
+            <option value="fade">Fade</option>
+            <option value="slide">Slide</option>
+        </b-select>
+        <transition :name="tipoAnimacao">
+            <b-alert class="" variant="info" show v-show="exibir">{{ msg }}</b-alert>
+        </transition>
 	</div>
 </template>
 
@@ -32,6 +41,7 @@ export default {
             msg: 'Mensagem para usuario',
             // exibir: true,
             exibir: false,
+            tipoAnimacao: 'fade',
         }
     }
 }
