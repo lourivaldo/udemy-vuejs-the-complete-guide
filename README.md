@@ -17,9 +17,9 @@
 - [x] Seção 15:Conectando com Servidor via HTTP
 - [x] Seção 16:Rotas em uma Aplicação VueJS
 - [x] Seção 17:Melhor Gerenciamento de Estado com Vuex
-- [ ] Seção 18:Projeto #03 - The Stock Trader
+- [x] Seção 18:Projeto #03 - The Stock Trader
 - [x] Seção 19:Publicando uma Aplicação VueJS na Amazon
-- [ ] Seção 20:Bonus: Projeto #04 - Projeto Calculadora
+- [x] Seção 20:Bonus: Projeto #04 - Projeto Calculadora
 - [ ] Seção 21:Bonus: Projeto #05 - Problema Monty Hall
 - [ ] Seção 22:Bonus: Projeto #06 - Base de Conhecimento Backend
 - [ ] Seção 23:Bonus: Projeto #06 - Base de Conhecimento Frontend
