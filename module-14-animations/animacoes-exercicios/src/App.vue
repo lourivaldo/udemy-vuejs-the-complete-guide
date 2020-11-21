@@ -12,52 +12,60 @@
 <!--            <b-alert class="" variant="info" show v-if="exibir">{{ msg }}</b-alert>-->
 <!--        </transition>-->
 
-        <transition name="slide" type="animation" appear>
-            <b-alert class="" variant="info" show v-show="exibir">{{ msg }}</b-alert>
-        </transition>
+<!--        <transition name="slide" type="animation" appear>-->
+<!--            <b-alert class="" variant="info" show v-show="exibir">{{ msg }}</b-alert>-->
+<!--        </transition>-->
 
-        <transition
-                enter-active-class="animated bounce"
-                leave-active-class="animated shake">
-            <b-alert class="" variant="info" show v-show="exibir">{{ msg }}</b-alert>
-        </transition>
+<!--        <transition-->
+<!--                enter-active-class="animated bounce"-->
+<!--                leave-active-class="animated shake">-->
+<!--            <b-alert class="" variant="info" show v-show="exibir">{{ msg }}</b-alert>-->
+<!--        </transition>-->
+
+<!--        <hr>-->
+<!--        <b-select v-model="tipoAnimacao" class="mb-4">-->
+<!--            <option value="fade">Fade</option>-->
+<!--            <option value="slide">Slide</option>-->
+<!--        </b-select>-->
+<!--        <transition :name="tipoAnimacao" mode="out-in">-->
+<!--            <b-alert variant="info" show v-if="exibir" key="info">{{ msg }}</b-alert>-->
+<!--            <b-alert variant="warning" show v-else key="warning">{{ msg }}</b-alert>-->
+<!--        </transition>-->
+
+<!--        <hr>-->
+<!--        <button class="btn btn-success" @click="exibir2 = !exibir2">Alternar</button>-->
+<!--        <transition-->
+<!--            :css="false"-->
+<!--            @before-enter="beforeEnter"-->
+<!--            @enter="enter"-->
+<!--            @after-enter="afterEnter"-->
+<!--            @enter-cancelled="enterCancelled"-->
+
+<!--            @before-leave="beforeLeave"-->
+<!--            @leave="leave"-->
+<!--            @after-leave="afterLeave"-->
+<!--            @leave-cancelled="leaveCancelled">-->
+<!--            <div v-if="exibir2" class="caixa"></div>-->
+<!--        </transition>-->
+
+<!--        <hr>-->
+<!--        <div class="mb-4">-->
+<!--            <b-button class="mr-2" variant="primary"-->
+<!--                      @click="componenteSelecionado = 'AlertaInfo'">Info</b-button>-->
+<!--            <b-button variant="secondary"-->
+<!--                      @click="componenteSelecionado = 'AlertaAdvertencia'">Advertencia</b-button>-->
+<!--        </div>-->
+<!--        <transition name="fade" mode="out-in">-->
+<!--            <component :is="componenteSelecionado"></component>-->
+<!--        </transition>-->
 
         <hr>
-        <b-select v-model="tipoAnimacao" class="mb-4">
-            <option value="fade">Fade</option>
-            <option value="slide">Slide</option>
-        </b-select>
-        <transition :name="tipoAnimacao" mode="out-in">
-            <b-alert variant="info" show v-if="exibir" key="info">{{ msg }}</b-alert>
-            <b-alert variant="warning" show v-else key="warning">{{ msg }}</b-alert>
-        </transition>
-
-        <hr>
-        <button class="btn btn-success" @click="exibir2 = !exibir2">Alternar</button>
-        <transition
-            :css="false"
-            @before-enter="beforeEnter"
-            @enter="enter"
-            @after-enter="afterEnter"
-            @enter-cancelled="enterCancelled"
-
-            @before-leave="beforeLeave"
-            @leave="leave"
-            @after-leave="afterLeave"
-            @leave-cancelled="leaveCancelled">
-            <div v-if="exibir2" class="caixa"></div>
-        </transition>
-
-        <hr>
-        <div class="mb-4">
-            <b-button class="mr-2" variant="primary"
-                      @click="componenteSelecionado = 'AlertaInfo'">Info</b-button>
-            <b-button variant="secondary"
-                      @click="componenteSelecionado = 'AlertaAdvertencia'">Advertencia</b-button>
-        </div>
-        <transition name="fade" mode="out-in">
-            <component :is="componenteSelecionado"></component>
-        </transition>
+        <b-button @click="adicionarAluno" class="mb-4">Adicionar aluno</b-button>
+        <transition-group name="slide" tag="div">
+            <b-list-group v-for="(aluno, i) in alunos" :key="aluno">
+                <b-list-group-item @click="removerAluno(i)">{{ aluno }}</b-list-group-item>
+            </b-list-group>
+        </transition-group>
 	</div>
 </template>
 
@@ -69,6 +77,7 @@ export default {
     components: { AlertaInfo, AlertaAdvertencia },
     data() {
         return {
+            alunos: ['Robberto', 'Julia', 'Loro', 'isla'],
             msg: 'Mensagem para usuario',
             // exibir: true,
             exibir: false,
@@ -78,8 +87,14 @@ export default {
             componenteSelecionado: 'AlertaInfo'
         }
     },
-
     methods: {
+        adicionarAluno() {
+            const s = Math.random().toString(36).substring(2);
+            this.alunos.push(s)
+        },
+        removerAluno(indice) {
+            this.alunos.splice(indice, 1);
+        },
         animar(el, done, negativo) {
             let rodada = 1;
             const temp = setInterval(() => {
@@ -189,9 +204,13 @@ export default {
 .slide-leave-active {
     animation: slide-out 1s ease;
     transition: opacity 1s;
+    position: absolute;
+    width: 100%;
 }
 .slide-enter, .slide-leave-to {
     opacity: 0;
 }
-
+.slide-move {
+    transition: transform 1s;
+}
 </style>
