@@ -3,17 +3,17 @@
 		<h1>Animações</h1>
         <hr>
         <b-button variant="primary" @click="exibir = !exibir" class="mb-4">Mostrar Mensagem</b-button>
-<!--        <transition name="fade">-->
-<!--&lt;!&ndash;            <b-alert class="" variant="info" :show="exibir">{{ msg }}</b-alert>&ndash;&gt;-->
-<!--            <b-alert class="" variant="info" show v-if="exibir">{{ msg }}</b-alert>-->
-<!--        </transition>-->
-
-        <transition name="slide">
+        <transition name="fade" appear>
+<!--            <b-alert class="" variant="info" :show="exibir">{{ msg }}</b-alert>-->
             <b-alert class="" variant="info" show v-if="exibir">{{ msg }}</b-alert>
         </transition>
 
-        <transition name="slide" type="animation">
-            <b-alert class="" variant="info" show v-if="exibir">{{ msg }}</b-alert>
+<!--        <transition name="slide">-->
+<!--            <b-alert class="" variant="info" show v-if="exibir">{{ msg }}</b-alert>-->
+<!--        </transition>-->
+
+        <transition name="slide" type="animation" appear>
+            <b-alert class="" variant="info" show v-show="exibir">{{ msg }}</b-alert>
         </transition>
 	</div>
 </template>
@@ -24,7 +24,7 @@ export default {
     data() {
         return {
             msg: 'Mensagem para usuario',
-            exibir: false,
+            exibir: true,
         }
     }
 }
@@ -77,11 +77,11 @@ export default {
 }
 .slide-enter-active {
     animation: slide-in 1s ease;
-    transition: opacity 6s;
+    transition: opacity 1s;
 }
 .slide-leave-active {
     animation: slide-out 1s ease;
-    transition: opacity 6s;
+    transition: opacity 1s;
 }
 .slide-enter, .slide-leave-to {
     opacity: 0;
