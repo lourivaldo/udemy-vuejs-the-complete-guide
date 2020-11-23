@@ -13,7 +13,7 @@
 - [x] Seção 11:Manipulando Entrada de Usuário com
 - [x] Seção 12:Usando e Criando Diretivas
 - [x] Seção 13:Melhorando sua App com Filtros e Mixins
-- [ ] Seção 14:Adicionando Animações e Transições
+- [x] Seção 14:Adicionando Animações e Transições
 - [x] Seção 15:Conectando com Servidor via HTTP
 - [x] Seção 16:Rotas em uma Aplicação VueJS
 - [x] Seção 17:Melhor Gerenciamento de Estado com Vuex
