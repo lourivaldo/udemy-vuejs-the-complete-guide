@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    container_name: cod3r_app
+    entrypoint: dockerize -template ./.docker/app/.env:.env -wait tcp://postgresql:5432 -timeout 40s ./.docker/app/entrypoint.sh
+    environment:
+      - DB_HOST=postgresql
+      - DB_DATABASE=app
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+    restart: always
+    volumes:
+      - .:/usr/src
+    networks:
+      - app-network
+    depends_on:
+      - postgresql
+      - mongo
+
+  postgresql:
+    image: postgres:10
+    container_name: cod3r_postgresql
+    restart: always
+    ports:
+      - "5435:5432"
+    volumes:
+      - "./.docker/postgresql/postgres-data:/var/lib/postgresql/data"
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo
+    container_name: cod3r_mongo
+    restart: always
+    tty: true
+    ports:
+      - 27019:27017
+    volumes:
+      - ./.docker/mongo/dbdata:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
