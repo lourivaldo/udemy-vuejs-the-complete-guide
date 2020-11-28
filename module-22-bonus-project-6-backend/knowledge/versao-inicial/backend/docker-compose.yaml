@@ -4,12 +4,12 @@ services:
   app:
     build: .
     container_name: cod3r_app
-    entrypoint: dockerize -template ./.docker/app/.env:.env -wait tcp://postgresql:5432 -timeout 40s ./.docker/app/entrypoint.sh
+    entrypoint: dockerize -template ./.docker/app/.env:.env -wait tcp://postgres:5432 -timeout 40s ./.docker/app/entrypoint.sh
     environment:
       - DB_HOST=postgresql
       - DB_DATABASE=app
-      - DB_USERNAME=root
-      - DB_PASSWORD=root
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
     restart: always
     ports:
       - "5865:3000"
@@ -18,12 +18,12 @@ services:
     networks:
       - app-network
     depends_on:
-      - postgresql
+      - postgres
       - mongo
 
-  postgresql:
+  postgres:
     image: postgres:10
-    container_name: cod3r_postgresql
+    container_name: cod3r_postgres
     restart: always
     ports:
       - "5435:5432"
