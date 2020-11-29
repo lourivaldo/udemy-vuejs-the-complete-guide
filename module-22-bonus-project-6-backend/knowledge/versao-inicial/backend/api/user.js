@@ -47,12 +47,21 @@ module.exports = app => {
         }
     };
 
-    const get = (req, res) => {
+    const all = (req, res) => {
         app.db('users')
             .select('id', 'name', 'email', 'admin')
             .then(users => res.json(users))
             .catch(err => res.status(500).send(err))
     };
 
-    return { save, get }
+    const get = (req, res) => {
+        app.db('users')
+            .select('id', 'name', 'email', 'admin')
+            .where({ id: req.params.id })
+            .first()
+            .then(user => res.json(user))
+            .catch(err => res.status(500).send(err))
+    };
+
+    return { save, all, get }
 };
