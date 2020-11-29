@@ -1,13 +1,13 @@
 // Update with your config settings.
 
 module.exports = {
-    client: 'postgresql',
+    client: 'pg',
     connection: {
         database: 'app',
         user:     'postgres',
         password: 'postgres',
         host:     'postgres',
-        port:     '5432',
+        port:     5432,
     },
     debug: true,
     pool: {
