@@ -12,7 +12,7 @@ services:
       - DB_PASSWORD=postgres
     restart: always
     ports:
-      - "5865:3000"
+      - "3865:3000"
     volumes:
       - .:/usr/src
     networks:
@@ -26,7 +26,7 @@ services:
     container_name: cod3r_postgres
     restart: always
     ports:
-      - "5435:5432"
+      - "5436:5432"
     volumes:
       - "./.docker/postgresql/postgres-data:/var/lib/postgresql/data"
     environment:
