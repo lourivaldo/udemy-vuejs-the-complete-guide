@@ -40,7 +40,7 @@ module.exports = app => {
             notExistsOrError(articles, 'Categoria possui artigos')
 
             const rowsDeleted = await app.db('categories')
-                .where({ categoryId: req.params.id })
+                .where({ id: req.params.id })
                 .del()
             existsOrError(rowsDeleted, 'Categoria não foi emcontrada')
 
@@ -83,14 +83,33 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     };
 
-    const getById =  (req, res) => {
+    const getById = (req, res) => {
         app.db('categories')
             .where({ id: req.params.id })
             .first()
             .then(category => res.json(category))
             .catch(err => res.status(500).send(err))
 
-    }
+    };
 
-    return { save, remove, get, getById }
+    const toTree = (categories, tree) => {
+        if (!tree) {
+            tree = categories.filter(c => !c.parentId)
+        }
+
+        tree = tree.map(parentNode => {
+            const isChild = node =>  node.parentId == parentNode.id
+            parentNode.children = toTree(categories, categories.filter(isChild))
+            return parentNode
+        });
+
+        return tree
+    };
+
+    const getTree = (req, res) => {
+        app.db('categories')
+            .then(categories => res.json(toTree(withPath(categories))))
+    };
+
+    return { save, remove, get, getById, getTree }
 };
