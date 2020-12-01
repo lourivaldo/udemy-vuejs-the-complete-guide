@@ -19,12 +19,15 @@ module.exports = app => {
         .put(app.api.category.save)
         .delete(app.api.category.remove);
 
-    app.route('/articles')
-        .post(app.api.article.save)
-        .get(app.api.article.get);
+   app.route('/articles')
+       .post(app.api.article.save)
+       .get(app.api.article.get);
 
-    app.route('/articles/:id')
-        .put(app.api.article.save)
-        .get(app.api.article.getById)
-        .delete(app.api.article.remove);
+   app.route('/articles/:id')
+       .put(app.api.article.save)
+       .get(app.api.article.getById)
+       .delete(app.api.article.remove);
+
+    app.route('/categories/:id/articles')
+        .delete(app.api.article.getByCategory);
 };
