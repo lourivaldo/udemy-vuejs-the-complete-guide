@@ -9,7 +9,7 @@ module.exports = app => {
         try {
             existsOrError(category.name, 'Nome não informado')
         } catch (e) {
-            return res.status(400).send(msg)
+            return res.status(400).send(e)
         }
 
         if (category.id) {
@@ -42,7 +42,7 @@ module.exports = app => {
             const rowsDeleted = await app.db('categories')
                 .where({ id: req.params.id })
                 .del()
-            existsOrError(rowsDeleted, 'Categoria não foi emcontrada')
+            existsOrError(rowsDeleted, 'Categoria não foi encontrada')
 
             res.status(204).send()
         } catch (e) {
