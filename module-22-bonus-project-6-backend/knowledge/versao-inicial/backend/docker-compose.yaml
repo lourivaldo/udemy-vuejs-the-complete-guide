@@ -4,7 +4,7 @@ services:
   app:
     build: .
     container_name: cod3r_app
-    entrypoint: dockerize -template ./.docker/app/.env:.env -wait tcp://postgres:5432 -timeout 40s ./.docker/app/entrypoint.sh
+    entrypoint: dockerize -wait tcp://postgres:5432 -timeout 40s ./.docker/app/entrypoint.sh
     environment:
       - DB_HOST=postgres
       - DB_DATABASE=app
