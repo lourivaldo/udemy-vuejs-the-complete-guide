@@ -9,7 +9,7 @@ module.exports = {
         host:     'postgres',
         port:     5432,
     },
-    debug: true,
+    // debug: true,
     pool: {
         min: 2,
         max: 10,

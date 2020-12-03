@@ -2,5 +2,5 @@
 
 npm i
 npm i knex -g
-knex migrate:latest
+#knex migrate:latest
 npm start

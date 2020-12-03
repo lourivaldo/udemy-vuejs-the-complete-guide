@@ -1,3 +1,1 @@
-module.exports = {
-    authSecret: ''
-}
+AUTH_SECRET=
