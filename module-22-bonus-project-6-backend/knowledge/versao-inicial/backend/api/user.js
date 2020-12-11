@@ -12,9 +12,8 @@ module.exports = app => {
     const save = async (req, res) => {
         const user = { ...req.body };
         if (req.params.id) user.id = req.params.id;
-
-        if (!req.originalUrl.startWith('/users')) user.admin = false;
-        if (!re.user || !req.user.admin) user.admin = false;
+        if (!req.originalUrl.startsWith('/users')) user.admin = false;
+        if (!req.user || !req.user.admin) user.admin = false;
 
         try {
             existsOrError(user.name, 'Nome não informado');
@@ -30,7 +29,7 @@ module.exports = app => {
                 notExistsOrError(userFromDB, 'Usuario ja cadastrado')
             }
         } catch (e) {
-            return  res.status(400).send(e)
+            return res.status(400).send(e)
         }
 
         user.password = encryptPassword(user.password)
