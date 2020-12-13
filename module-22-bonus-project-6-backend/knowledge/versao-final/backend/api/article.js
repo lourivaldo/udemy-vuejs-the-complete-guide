@@ -74,6 +74,7 @@ module.exports = app => {
     };
 
     const getByCategory = async (req, res) => {
+        console.log('getByCategory');
         const categoryId = req.params.id;
         const page = req.query.page || 1;
         const categories = await app.db.raw(queries.categoryWithChildren, categoryId);
