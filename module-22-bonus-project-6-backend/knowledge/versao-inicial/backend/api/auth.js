@@ -23,7 +23,7 @@ module.exports = app => {
             id: user.id,
             name: user.name,
             email: user.email,
-            admin: Boolean(user.admin),
+            admin: user.admin === 'true',
             iat: now,
             exp: now + (60 * 60 * 24 * 3),
         };
@@ -48,7 +48,7 @@ module.exports = app => {
         }
 
         return res.send(false);
-    }
+    };
 
     return { signin, validateToken }
 };
