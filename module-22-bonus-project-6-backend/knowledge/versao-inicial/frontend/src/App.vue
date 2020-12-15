@@ -1,9 +1,9 @@
 <template>
-	<div id="app" :class="{'hide-menu': !isMenuVisible}">
+	<div id="app" :class="{'hide-menu': !isMenuVisible || !user}">
 		<Header title="Cod3r - Base de Conhecimento"
-                :hideToggle="false"
-                :hide-user-dropdown="false"/>
-        <Menu />
+                :hideToggle="!user"
+                :hide-user-dropdown="!user"/>
+        <Menu v-if="user"/>
         <Content />
         <Footer />
 	</div>
@@ -25,7 +25,7 @@ export default {
         Footer,
     },
     computed: {
-        ...mapState(['isMenuVisible']),
+        ...mapState(['isMenuVisible', 'user']),
     },
 }
 </script>
